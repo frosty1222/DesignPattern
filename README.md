@@ -35,6 +35,11 @@
 cho việc tạo một đối tượng, nhưng để các lớp con quyết định lớp nào sẽ được tạo. "Factory method"
 giao việc khởi tạo một đối tượng cụ thể cho lớp con."
 ```
+### khi nào thì dùng 
+```
+Khi bạn có một nhóm các class tương tự nhau, và tùy vào ngữ cảnh của bài toán mà sẽ phải khởi tạo một đối tượng từ một trong số các class trên.
+Khi bạn cho rằng khả năng cao trong tương lai sẽ có những class tương tự nhau được tạo ra.
+```
 ## Diagram 
 ![](../design_pattern/CreationPattern/factory_pattern/photo/factory_pattern.web);
 # Example
@@ -124,9 +129,12 @@ hàm này Shape::SQUARE,Shape::RECTANGLE,Shape::CIRCLE; mỗi lần truyền và
 biến này thì khi gọi tới hàm draw(); sẽ trả về kết quả 
 ví dụ ta truyền vào Shape::CIRCLE thì hàm draw();sẽ trả về vẽ "draw cỉcle"
 ```
+# Singleton
+```
+-Singleton là  creational design pattern, đảm bảo rằng chỉ có một đối tượng cùng loại tồn tại và cung cấp một điểm truy cập duy nhất vào nó cho bất kỳ mã nào khác.
+```
 # II.Structural (nhóm cấu trúc)
 **mẫu này có 11 mẫu chính**
-```
  +Adapter/ Wrapper.
  +Bridge.
  +Composite.
@@ -210,6 +218,13 @@ class SimpleBook{
          echo $bookAdapter->getAuthorAndTitle()
  // kết quả là: Design Patterns by Gamma, Helm, Johnson, and Vlissides
 ```
+# Facade
+### định nghĩa
+```
++ Facade là một mẫu thiết kế cấu trúc cung cấp một giao diện đơn giản hóa (nhưng có giới hạn) cho một hệ thống phức tạp gồm các lớp,
+ thư viện hoặc khuôn khổ.
+```
+![](../design_pattern/Structual/Facade/photo/structual.webp);
 # Behavioral patterns (nhóm ứng xử):
 **nhóm này có 12 mẫu design**
 ```
@@ -331,8 +346,20 @@ class BookStarsOnCommand extends BookCommand {
     
     END TESTING COMMAND PATTERN
 ```
+## Observer Design
+### Định nghĩa
+```
+Mẫu quan sát là một mẫu thiết kế phần mềm trong đó một đối tượng, được gọi là chủ thể, duy trì một danh sách các đối tượng phụ thuộc của nó, được gọi là Observer và thông báo cho họ tự động về bất kỳ thay đổi trạng thái nào, thường bằng cách gọi một trong các phương thức của chúng.
+```
+**sơ đồ**
+![](../design_pattern/BehavioralPattern/Observer/photo/e8e21d64-3c1e-4f75-841f-323b6322cddf.web)
+```
+các hàm chính là attach, detach,và notify
++ hàm attach là hàm thêm bộ object 
++ hàm detach là hàm bỏ đi một object 
++ hàm notify là hàm xuất ra thông báo 
+```
 ### ngoài ra thì gần đây có xuất hiện thêm 4 design pattern nữa
-
 Delegation.
 Service Locator.
 Repository.

@@ -4,11 +4,17 @@ use design\Command\BookCommandee;
 use design\Command\BookCommand;
 use design\Command\BookStarsOffCommand;
 use design\Command\BookStarsOnCommand;
+use design\Observer\Account;
+use design\Observer\Logger;
+use design\Observer\Security;
+use design\Observer\Mailer;
 use creation\factory_pattern\ShapeFactory;
 use creation\factory_pattern\Shape;
 use structual\Adapter_Pattern\BookAdapter;
 use structual\Adapter_Pattern\SimpleBook;
-
+use structual\Facade\Facade;
+use structual\Facade\Subsystem1;
+use structual\Facade\Subsystem2;
 ?>
 
 <!DOCTYPE html>
@@ -48,38 +54,65 @@ use structual\Adapter_Pattern\SimpleBook;
         //  $bookAdapter = new BookAdapter($book);
         //  echo $bookAdapter->getAuthorAndTitle()
 
-        writeln('BEGIN TESTING COMMAND PATTERN');
-        writeln('');
+        // writeln('BEGIN TESTING COMMAND PATTERN');
+        // writeln('');
         
-        $book = new BookCommandee('Design Patterns', 'Gamma, Helm, Johnson, and Vlissides');
-        writeln('book after creation: ');
-        writeln($book->getAuthorAndTitle());
-        writeln('');
+        // $book = new BookCommandee('Design Patterns', 'Gamma, Helm, Johnson, and Vlissides');
+        // writeln('book after creation: ');
+        // writeln($book->getAuthorAndTitle());
+        // writeln('');
         
-        $starsOn = new BookStarsOnCommand($book);
-        callCommand($starsOn);
-        writeln('book after stars on: ');
-        writeln($book->getAuthorAndTitle());
-        writeln('');
+        // $starsOn = new BookStarsOnCommand($book);
+        // callCommand($starsOn);
+        // writeln('book after stars on: ');
+        // writeln($book->getAuthorAndTitle());
+        // writeln('');
         
-        $starsOff = new BookStarsOffCommand($book);
-        callCommand($starsOff);
-        writeln('book after stars off: ');
-        writeln($book->getAuthorAndTitle());
-        writeln('');
+        // $starsOff = new BookStarsOffCommand($book);
+        // callCommand($starsOff);
+        // writeln('book after stars off: ');
+        // writeln($book->getAuthorAndTitle());
+        // writeln('');
 
-        writeln('END TESTING COMMAND PATTERN');
+        // writeln('END TESTING COMMAND PATTERN');
         
-        // the callCommand function demonstrates that a specified
-        // function in BookCommandee can be executed with only 
-        // an instance of BookCommand.
-        function callCommand(BookCommand $bookCommand_in) {
-            $bookCommand_in->execute();
-        }
+        // // the callCommand function demonstrates that a specified
+        // // function in BookCommandee can be executed with only 
+        // // an instance of BookCommand.
+        // function callCommand(BookCommand $bookCommand_in) {
+        //     $bookCommand_in->execute();
+        // }
 
-        function writeln($line_in) {
-            echo $line_in."<br/>";
-        }
+        // function writeln($line_in) {
+        //     echo $line_in."<br/>";
+        // }
+        // ?>
+        <?php
+        //$account = new Account();
+        //Attach các observer vào subject
+        //$security = new Security();
+        //$account->attach(new Logger());
+        //$account->attach(new Mailer());
+        //$account->attach($security);
+        // Đăng nhập
+        //$account->login('thanhsm93@gmail.com', '192.168.0.1');
+        //echo "<br>";
+        // Thay đổi state
+        //$account->setState(Account::EXPIRED);
+        //$account->save();
+        //$account->login('hack@framgia.com', '10.0.0.1');
+        //echo "<br>";
+        // Xóa security observer
+        //$account->detach($security);
+        //$account->login('hack@framgia.com', '10.0.0.1'); //will success
+        function clientCode(Facade $facade)
+            {
+                echo $facade->operation();
+            }
+            $subsystem1 = new Subsystem1();
+            $subsystem2 = new Subsystem2();
+            $facade = new Facade($subsystem1, $subsystem2);
+            clientCode($facade);
         ?>
         <!-- jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
